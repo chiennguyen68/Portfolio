@@ -8,7 +8,7 @@ import CanvasLoader from "../components/Loading.jsx";
 import { workExperiences } from "../constants/index.js";
 
 const WorkExperience = () => {
-  const [animationName, setAnimationName] = useState("idle");
+  const [animationName, setAnimationName] = useState("clapping");
 
   return (
     <section className="c-space my-20" id="work">
