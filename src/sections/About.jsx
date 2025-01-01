@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Globe from "react-globe.gl";
 
 import Button from "../components/Button.jsx";
 
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
+  const globeRef = useRef();
 
+  useEffect(() => {
+    if (globeRef.current) {
+      globeRef.current.pointOfView(
+        { lat: 15.87, lng: 100.9925, altitude: 1.1 },
+        1000
+      );
+    }
+  }, []);
   const handleCopy = () => {
-    navigator.clipboard.writeText(" adrian@jsmastery.pro");
+    navigator.clipboard.writeText("chien.nguyen9c9@gmail.com");
     setHasCopied(true);
 
     setTimeout(() => {
@@ -23,22 +32,22 @@ const About = () => {
             <img
               src="assets/cv-avatar.png"
               alt="grid-1"
-              className="w-full sm:h-[150px] h-fit object-contain rounded-lg"
+              className="w-full object-contain rounded-lg"
             />
 
             <div>
               <p className="grid-headtext">Hi, I’m Chien ND</p>
               <p className="grid-subtext">
-                Hi, I’m Chien ND, a Frontend Engineer with extensive
-                experience in web development. Currently leading frontend
-                projects at PadiTech, I specialize in building scalable,
-                responsive platforms for Japanese clients, such as Boosty. Over
-                the years, I’ve contributed to various projects, from integrated
-                management systems to educational platforms, utilizing
-                technologies like Microservices Frontend, React.js, Next.js,
-                Tailwind, and more. My focus remains on delivering high-quality,
-                maintainable solutions and continuously improving performance
-                and user experience.
+                Hi, I’m Chien ND, a Frontend Engineer with extensive experience
+                in web development. Currently leading frontend projects at
+                PadiTech, I specialize in building scalable, responsive
+                platforms for Japanese clients, such as Boosty. Over the years,
+                I’ve contributed to various projects, from integrated management
+                systems to educational platforms, utilizing technologies like
+                Microservices Frontend, React.js, Next.js, Tailwind, and more.
+                My focus remains on delivering high-quality, maintainable
+                solutions and continuously improving performance and user
+                experience.
               </p>
             </div>
           </div>
@@ -85,6 +94,7 @@ const About = () => {
           <div className="grid-container">
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
               <Globe
+                ref={globeRef}
                 height={326}
                 width={326}
                 backgroundColor="rgba(0, 0, 0, 0)"
@@ -95,9 +105,9 @@ const About = () => {
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
                 labelsData={[
                   {
-                    lat: 40,
-                    lng: -100,
-                    text: "Rjieka, Croatia",
+                    lat: 21.0285,
+                    lng: 105.8542,
+                    text: "Ha Noi, Vietnam",
                     color: "white",
                     size: 15,
                   },
@@ -109,8 +119,7 @@ const About = () => {
                 I’m very flexible with time zone communications & locations
               </p>
               <p className="grid-subtext">
-                I&apos;m based in Rjieka, Croatia and open to remote work
-                worldwide.
+                I’m based in Hanoi, Vietnam and open to remote work worldwide.
               </p>
               <Button name="Contact Me" isBeam containerClass="w-full mt-10" />
             </div>
@@ -152,7 +161,7 @@ const About = () => {
                   alt="copy"
                 />
                 <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white">
-                  adrian@jsmastery.pro
+                  chien.nguyen9c9@gmail.com
                 </p>
               </div>
             </div>
